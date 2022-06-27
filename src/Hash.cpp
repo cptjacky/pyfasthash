@@ -13,7 +13,6 @@
 #include "xxHash.h"
 #include "Highway.h"
 #include "wyHash.h"
-#include "Halftime.h"
 
 PYBIND11_MODULE(_pyhash, m)
 {
@@ -143,12 +142,4 @@ PYBIND11_MODULE(_pyhash, m)
 
   wy_hash_32_t::Export(m, "wy_32");
   wy_hash_64_t::Export(m, "wy_64");
-
-  halftime_hash_64_t::Export(m, "halftime_64");
-
-#ifdef SUPPORT_INT128
-  halftime_hash_128_t::Export(m, "halftime_128");
-  halftime_hash_256_t::Export(m, "halftime_256");
-  halftime_hash_512_t::Export(m, "halftime_512");
-#endif
 }
