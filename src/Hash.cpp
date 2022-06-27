@@ -4,12 +4,9 @@
 #include "MurmurHash.h"
 #include "Lookup3.h"
 #include "SuperFastHash.h"
-#include "CityHash.h"
 #include "SpookyHash.h"
 #include "FarmHash.h"
-#include "MetroHash.h"
 #include "Mum.h"
-#include "T1ha.h"
 #include "xxHash.h"
 #include "Highway.h"
 #include "wyHash.h"
@@ -70,14 +67,6 @@ PYBIND11_MODULE(_pyhash, m)
 
   super_fast_hash_t::Export(m, "super_fast_hash");
 
-  city_hash_32_t::Export(m, "city_32");
-  city_hash_64_t::Export(m, "city_64");
-#ifdef SUPPORT_INT128
-  city_hash_128_t::Export(m, "city_128");
-  city_hash_crc_128_t::Export(m, "city_crc_128");
-  city_fingerprint_256_t::Export(m, "city_fingerprint_256");
-#endif
-
   spooky_hash_v1_32_t::Export(m, "spooky_v1_32");
   spooky_hash_v1_64_t::Export(m, "spooky_v1_64");
 #ifdef SUPPORT_INT128
@@ -102,29 +91,9 @@ PYBIND11_MODULE(_pyhash, m)
   farm_fingerprint_128_t::Export(m, "farm_fingerprint_128");
 #endif
 
-  metro_hash_64_1_t::Export(m, "metro_64_1");
-  metro_hash_64_2_t::Export(m, "metro_64_2");
-#ifdef SUPPORT_INT128
-  metro_hash_128_1_t::Export(m, "metro_128_1");
-  metro_hash_128_2_t::Export(m, "metro_128_2");
-#endif
-
-  metro_hash_64_crc_1_t::Export(m, "metro_64_crc_1");
-  metro_hash_64_crc_2_t::Export(m, "metro_64_crc_2");
-#ifdef SUPPORT_INT128
-  metro_hash_128_crc_1_t::Export(m, "metro_128_crc_1");
-  metro_hash_128_crc_2_t::Export(m, "metro_128_crc_2");
-#endif
 
   mum_hash_64_t::Export(m, "mum_64");
 
-  t1ha2_atonce_t::Export(m, "t1ha2_atonce");
-#ifdef SUPPORT_INT128
-  t1ha2_atonce128_t::Export(m, "t1ha2_atonce128");
-#endif
-  t1ha1_le_t::Export(m, "t1ha1_le");
-  t1ha1_be_t::Export(m, "t1ha1_be");
-  t1ha0_t::Export(m, "t1ha0");
 
   xx_hash_32_t::Export(m, "xx_32");
   xx_hash_64_t::Export(m, "xx_64");
