@@ -100,7 +100,10 @@ elif IS_POSIX:
     else:
         libraries += ["rt", "gcc"]
 
-    extra_compile_args += ["-march=native"]
+    if IS_MACOS and IS_ARM64:
+        extra_compile_args += ["-mcpu=apple-m1"]
+    else:
+        extra_compile_args += ["-march=native"]
 
 if SUPPORT_INT128:
     macros += [
@@ -195,9 +198,13 @@ if not IS_WINNT:
         srcs += ["src/highwayhash/highwayhash/hh_neon.cc"]
         cflags += [
             '-mfloat-abi=hard',
-            '-march=armv7-a',
             '-mfpu=neon',
         ]
+
+        if not IS_MACOS:
+            cflags += [
+                '-march=armv7-a',
+            ]
 
     elif IS_PPC64:
         srcs += ["src/highwayhash/highwayhash/hh_vsx.cc"]
