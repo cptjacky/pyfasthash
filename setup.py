@@ -180,10 +180,10 @@ if not IS_WINNT:
         #     '-mfpu=neon',
         # ]
 
-        if not IS_MACOS:
-            cflags += [
-                '-march=armv7-a',
-            ]
+        # if not IS_MACOS:
+        #     cflags += [
+        #         '-march=armv7-a',
+        #     ]
 
     elif IS_PPC64:
         srcs += ["src/highwayhash/highwayhash/hh_vsx.cc"]
