@@ -175,10 +175,10 @@ if not IS_WINNT:
 
     elif IS_ARM64:
         srcs += ["src/highwayhash/highwayhash/hh_neon.cc"]
-        cflags += [
-            '-mfloat-abi=hard',
-            '-mfpu=neon',
-        ]
+        # cflags += [
+        #     '-mfloat-abi=hard',
+        #     '-mfpu=neon',
+        # ]
 
         if not IS_MACOS:
             cflags += [
