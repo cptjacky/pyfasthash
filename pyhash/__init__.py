@@ -22,57 +22,9 @@ fnv1a_32 = _pyhash.fnv1a_32
 fnv1_64 = _pyhash.fnv1_64
 fnv1a_64 = _pyhash.fnv1a_64
 
-murmur1_32 = _pyhash.murmur1_32
-murmur1_aligned_32 = _pyhash.murmur1_aligned_32
-murmur2_32 = _pyhash.murmur2_32
-murmur2a_32 = _pyhash.murmur2a_32
-murmur2_aligned_32 = _pyhash.murmur2_aligned_32
-murmur2_neutral_32 = _pyhash.murmur2_neutral_32
-murmur2_x64_64a = _pyhash.murmur2_x64_64a
-murmur2_x86_64b = _pyhash.murmur2_x86_64b
-murmur3_32 = _pyhash.murmur3_32
-murmur3_x86_128 = _pyhash.__dict__.get('murmur3_x86_128')
-murmur3_x64_128 = _pyhash.__dict__.get('murmur3_x64_128')
-
-lookup3 = _pyhash.lookup3_little if __is_little_endian__ else _pyhash.lookup3_big
-lookup3_little = _pyhash.lookup3_little
-lookup3_big = _pyhash.lookup3_big
-
-super_fast_hash = _pyhash.super_fast_hash
-
-spooky_v1_32 = _pyhash.spooky_v1_32
-spooky_v1_64 = _pyhash.spooky_v1_64
-spooky_v1_128 = _pyhash.__dict__.get('spooky_v1_128')
-
-spooky_v2_32 = _pyhash.spooky_v2_32
-spooky_v2_64 = _pyhash.spooky_v2_64
-spooky_v2_128 = _pyhash.__dict__.get('spooky_v2_128')
-
-spooky_32 = spooky_v2_32
-spooky_64 = spooky_v2_64
-spooky_128 = spooky_v2_128
-
-farm_32 = _pyhash.__dict__.get('farm_32')
-farm_64 = _pyhash.__dict__.get('farm_64')
-farm_128 = _pyhash.__dict__.get('farm_128')
-
-farm_fingerprint_32 = _pyhash.__dict__.get('farm_fingerprint_32')
-farm_fingerprint_64 = _pyhash.__dict__.get('farm_fingerprint_64')
-farm_fingerprint_128 = _pyhash.__dict__.get('farm_fingerprint_128')
-
-mum_64 = _pyhash.mum_64
-
-
 xx_32 = _pyhash.xx_32
 xx_64 = _pyhash.xx_64
 xxh3_64 = _pyhash.xxh3_64
 xxh3_128 = _pyhash.__dict__.get('xxh3_128')
-
-highway_64 = _pyhash.__dict__.get('highway_64')
-highway_128 = _pyhash.__dict__.get('highway_128')
-highway_256 = _pyhash.__dict__.get('highway_256')
-
-wy_32 = _pyhash.wy_32
-wy_64 = _pyhash.wy_64
 
 __hasher__ = dict(inspect.getmembers(sys.modules[__name__], inspect.isclass))

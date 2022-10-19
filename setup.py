@@ -59,7 +59,6 @@ cpu = cpu_features()
 macros = []
 include_dirs = [
     "src/pybind11/include",
-    "src/highwayhash",
 ]
 library_dirs = []
 libraries = []
@@ -121,80 +120,15 @@ c_libraries = [(
         "macros": extra_macros,
     }
 ), (
-    'smhasher', {
-        "sources": list(filter(None, [
-            'src/smhasher/MurmurHash1.cpp',
-            'src/smhasher/MurmurHash2.cpp',
-            'src/smhasher/MurmurHash3.cpp',
-            'src/smhasher/Spooky.cpp',
-            'src/smhasher/SpookyV2.cpp',
-        ])),
-        "cflags": extra_compile_args + [
-            "-std=c++11",
-        ],
-    }
-), (
-    'farm', {
-        "sources": ['src/smhasher/farmhash-c.c'],
-        "macros": extra_macros,
-    }
-), (
-    'lookup3', {
-        "sources": ['src/lookup3/lookup3.c'],
-        "macros": extra_macros,
-    }
-), (
-    'SuperFastHash', {
-        "sources": ['src/SuperFastHash/SuperFastHash.c'],
-        "macros": extra_macros,
-    }
-), (
     "xxhash", {
         "sources": ["src/xxHash/xxhash.c"],
     }
 )]
 
 if not IS_WINNT:
-    srcs = [
-        "src/highwayhash/highwayhash/arch_specific.cc",
-        "src/highwayhash/highwayhash/instruction_sets.cc",
-        "src/highwayhash/highwayhash/os_specific.cc",
-        "src/highwayhash/highwayhash/hh_portable.cc",
-    ]
     cflags = extra_compile_args + [
-        "-Isrc/highwayhash",
         "-std=c++11",
     ]
-
-    if IS_X86_64:
-        srcs += [
-            "src/highwayhash/highwayhash/hh_sse41.cc",
-            "src/highwayhash/highwayhash/hh_avx2.cc",
-        ]
-        cflags += ["-msse4.1", "-mavx2"]
-
-    elif IS_ARM64:
-        srcs += ["src/highwayhash/highwayhash/hh_neon.cc"]
-        # cflags += [
-        #     '-mfloat-abi=hard',
-        #     '-mfpu=neon',
-        # ]
-
-        # if not IS_MACOS:
-        #     cflags += [
-        #         '-march=armv7-a',
-        #     ]
-
-    elif IS_PPC64:
-        srcs += ["src/highwayhash/highwayhash/hh_vsx.cc"]
-        cflags += ['-mvsx']
-
-    c_libraries += [(
-        "highwayhash", {
-            "sources": srcs,
-            "cflags": cflags,
-        }
-    )]
 
 libraries += [libname for (libname, _) in c_libraries]
 cmdclass = {}
